@@ -6,8 +6,6 @@ public class PlayerInfoManager : Singleton<PlayerInfoManager>
 {
     UserData userData;
 
-
-
     public PlayerInfoManager()
     {
         userData = new UserData();        

@@ -2,8 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Common.Protocol;
+using SLua;
 
+[CustomLuaClass]
 public class Shell : MonoBehaviour {
+
+    [CustomLuaClass]
+    public delegate void DiePrtocolSendDelg(GameObject collidedObject);
+    public DiePrtocolSendDelg dpsd;
+
+    [CustomLuaClass]
+    public delegate void TestPrint();
+    public TestPrint tp;
 
     GameObject shellExplosionPrefab;
 
@@ -19,18 +29,16 @@ public class Shell : MonoBehaviour {
 
         if (collision.gameObject.name == "Tank(Clone)")
         {
-            int role_id = SceneManager.Instance.FindIdByTanks(collision.gameObject);
-            if (role_id != -1)
-            {
-                Debug.Log("id " + role_id);
-
-                DieProtocol dieProtocol = new DieProtocol(role_id);
-                NetworkManager.Instance.Send(dieProtocol);
-            }
+            dpsd(collision.gameObject);
         }
 
         Destroy(this.gameObject);
         Destroy(shellExplosion, 1);
 
+    }
+
+    public void ADD(LuaFunction function)
+    {
+        TestPrint test = function.cast<TestPrint>();
     }
 }

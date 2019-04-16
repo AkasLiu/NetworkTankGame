@@ -20,3 +20,9 @@ C:\Users\Administrator\Desktop\NetworkTankProject\Common\Common\obj\Debug\Common
 C:\Users\Administrator\Desktop\NetworkTankProject\Common\Common\bin\Debug\Common.dll
 C:\Users\Administrator\Desktop\NetworkTankProject\Common\Common\bin\Debug\Common.pdb
 C:\Users\Administrator\Desktop\NetworkTankProject\Common\Common\obj\Debug\Common.csprojAssemblyReference.cache
+F:\Code\NetworkTankProject\Common\Common\bin\Debug\Common.dll
+F:\Code\NetworkTankProject\Common\Common\bin\Debug\Common.pdb
+F:\Code\NetworkTankProject\Common\Common\obj\Debug\Common.csprojAssemblyReference.cache
+F:\Code\NetworkTankProject\Common\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+F:\Code\NetworkTankProject\Common\Common\obj\Debug\Common.dll
+F:\Code\NetworkTankProject\Common\Common\obj\Debug\Common.pdb

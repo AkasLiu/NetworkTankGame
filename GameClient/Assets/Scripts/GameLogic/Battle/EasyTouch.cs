@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Common.Protocol;
+using SLua;
 
+[CustomLuaClass]
 public class EasyTouch : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     //图标移动最大半径
@@ -25,7 +27,6 @@ public class EasyTouch : MonoBehaviour, IDragHandler, IEndDragHandler
         get { return vertical; }
     }
 
-
     // Use this for initialization
     void Start()
     {
@@ -33,20 +34,34 @@ public class EasyTouch : MonoBehaviour, IDragHandler, IEndDragHandler
         moveBackPos = transform.parent.transform.position;
     }
 
+    [DoNotToLua]
     // Update is called once per frame
-    void Update()
-    {
-        horizontal = transform.localPosition.x;
-        vertical = transform.localPosition.y;
+    //void FixedUpdate()
+    //{
+    //    horizontal = transform.localPosition.x;
+    //    vertical = transform.localPosition.y;
       
-        if (SceneManager.Instance.FindTanksById(PlayerInfoManager.Instance.GetUserData().ID) != null)
-        {
-            if (Mathf.Abs(horizontal) > 0 || Mathf.Abs(vertical) > 0)
-            {
-                SceneManager.Instance.OnReceiveMove(PlayerInfoManager.Instance.GetUserData().ID, horizontal, vertical);               
-            }
-        }      
-    }
+    //    if (SceneManager.Instance.FindTanksById(PlayerInfoManager.Instance.GetUserData().ID) != null)
+    //    {
+    //        if (Mathf.Abs(horizontal) > 0 || Mathf.Abs(vertical) > 0)
+    //        {
+    //            SceneManager.Instance.OnReceiveMove(PlayerInfoManager.Instance.GetUserData().ID, horizontal, vertical);               
+    //        }
+    //    }
+
+    //    GameObject tempTank = SceneManager.Instance.FindTanksById(PlayerInfoManager.Instance.GetUserData().ID).SelfGameObject;
+
+    //    SyncPositionProtocol syncPositionProtocol = new SyncPositionProtocol(PlayerInfoManager.Instance.GetUserData().ID,
+    //       tempTank.transform.position.x,
+    //        tempTank.transform.position.y,
+    //        tempTank.transform.position.z,
+    //        tempTank.transform.localEulerAngles.x,
+    //        tempTank.transform.localEulerAngles.y,
+    //        tempTank.transform.localEulerAngles.z
+    //        );
+
+    //    NetworkManager.Instance.Send(syncPositionProtocol);
+    //}
 
     /// <summary>
     /// 当鼠标开始拖拽时
@@ -62,7 +77,6 @@ public class EasyTouch : MonoBehaviour, IDragHandler, IEndDragHandler
         float radius = Mathf.Clamp(distance, 0, maxRadius);
         //限制半径长度
         transform.position = moveBackPos + oppsitionVec.normalized * radius;
-
     }
 
     /// <summary>

@@ -10,6 +10,8 @@ namespace GameServer.Controller
 {
     class SyncPositionController : BaseController
     {
+        long timeStamp = 0;
+
         public SyncPositionController()
         {
             ContollerId = (int)ProtocolId.SyncPosition;
@@ -17,6 +19,14 @@ namespace GameServer.Controller
 
         public override byte[] HandleRequest(byte[] data, Client client, Server server)
         {
+
+            long a = DateTime.Now.Ticks / 10000 - timeStamp;
+            timeStamp = DateTime.Now.Ticks / 10000;
+            if (a > 50)
+            {
+                Console.WriteLine(a);
+            }
+
             SyncPositionProtocol syncPositionProtocol = new SyncPositionProtocol();
             syncPositionProtocol.Decode(data);
 

@@ -62,17 +62,6 @@ public class LoginController : Singleton<LoginController>
         NetworkManager.Instance.Send(new LoginProtocol(username, pwd));
     }
 
-    //public void SetLoginModel(string username, string pwd)
-    //{
-    //    model.Username = username;
-    //    model.Password = pwd;
-    //}
-
-    //public LoginModel GetLoginModel()
-    //{
-    //    return model;
-    //}
-
     public void ShowView()
     {
         UIManager.Instance.AddView(view);        

@@ -38,3 +38,13 @@ C:\Users\Administrator\Desktop\NetworkTankProject\GameClientConsole\bin\Debug\Ga
 C:\Users\Administrator\Desktop\NetworkTankProject\GameClientConsole\bin\Debug\Common.dll
 C:\Users\Administrator\Desktop\NetworkTankProject\GameClientConsole\bin\Debug\Common.pdb
 C:\Users\Administrator\Desktop\NetworkTankProject\GameClientConsole\obj\Debug\GameClientConsole.csproj.CopyComplete
+F:\Code\NetworkTankProject\GameClientConsole\bin\Debug\GameClientConsole.exe.config
+F:\Code\NetworkTankProject\GameClientConsole\bin\Debug\GameClientConsole.exe
+F:\Code\NetworkTankProject\GameClientConsole\bin\Debug\GameClientConsole.pdb
+F:\Code\NetworkTankProject\GameClientConsole\bin\Debug\Common.dll
+F:\Code\NetworkTankProject\GameClientConsole\bin\Debug\Common.pdb
+F:\Code\NetworkTankProject\GameClientConsole\obj\Debug\GameClientConsole.csproj.CoreCompileInputs.cache
+F:\Code\NetworkTankProject\GameClientConsole\obj\Debug\GameClientConsole.csproj.CopyComplete
+F:\Code\NetworkTankProject\GameClientConsole\obj\Debug\GameClientConsole.exe
+F:\Code\NetworkTankProject\GameClientConsole\obj\Debug\GameClientConsole.pdb
+F:\Code\NetworkTankProject\GameClientConsole\obj\Debug\GameClientConsole.csprojAssemblyReference.cache

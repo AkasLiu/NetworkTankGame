@@ -45,3 +45,15 @@ C:\Users\Administrator\Desktop\NetworkTankProject\GameServer\GameServer\obj\Debu
 C:\Users\Administrator\Desktop\NetworkTankProject\GameServer\GameServer\obj\Debug\GameServer.csproj.CopyComplete
 C:\Users\Administrator\Desktop\NetworkTankProject\GameServer\GameServer\obj\Debug\GameServer.exe
 C:\Users\Administrator\Desktop\NetworkTankProject\GameServer\GameServer\obj\Debug\GameServer.pdb
+F:\Code\NetworkTankProject\GameServer\GameServer\bin\Debug\GameServer.exe.config
+F:\Code\NetworkTankProject\GameServer\GameServer\bin\Debug\GameServer.exe
+F:\Code\NetworkTankProject\GameServer\GameServer\bin\Debug\GameServer.pdb
+F:\Code\NetworkTankProject\GameServer\GameServer\bin\Debug\Common.dll
+F:\Code\NetworkTankProject\GameServer\GameServer\bin\Debug\MySql.Data.dll
+F:\Code\NetworkTankProject\GameServer\GameServer\bin\Debug\Common.pdb
+F:\Code\NetworkTankProject\GameServer\GameServer\bin\Debug\MySql.Data.xml
+F:\Code\NetworkTankProject\GameServer\GameServer\obj\Debug\GameServer.csprojAssemblyReference.cache
+F:\Code\NetworkTankProject\GameServer\GameServer\obj\Debug\GameServer.csproj.CoreCompileInputs.cache
+F:\Code\NetworkTankProject\GameServer\GameServer\obj\Debug\GameServer.csproj.CopyComplete
+F:\Code\NetworkTankProject\GameServer\GameServer\obj\Debug\GameServer.exe
+F:\Code\NetworkTankProject\GameServer\GameServer\obj\Debug\GameServer.pdb

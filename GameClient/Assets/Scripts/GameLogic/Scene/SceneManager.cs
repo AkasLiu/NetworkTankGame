@@ -116,16 +116,16 @@ public class SceneManager : Singleton<SceneManager>
             tempTank.transform.transform.Rotate(0, hor / 2 * Time.deltaTime, 0, Space.Self);
         }
 
-        SyncPositionProtocol syncPositionProtocol = new SyncPositionProtocol(PlayerInfoManager.Instance.GetUserData().ID,
-           tempTank.transform.position.x,
-            tempTank.transform.position.y,
-            tempTank.transform.position.z,
-            tempTank.transform.localEulerAngles.x,
-            tempTank.transform.localEulerAngles.y,
-            tempTank.transform.localEulerAngles.z
-            );
+        //SyncPositionProtocol syncPositionProtocol = new SyncPositionProtocol(PlayerInfoManager.Instance.GetUserData().ID,
+        //   tempTank.transform.position.x,
+        //    tempTank.transform.position.y,
+        //    tempTank.transform.position.z,
+        //    tempTank.transform.localEulerAngles.x,
+        //    tempTank.transform.localEulerAngles.y,
+        //    tempTank.transform.localEulerAngles.z
+        //    );
 
-        NetworkManager.Instance.Send(syncPositionProtocol);
+        //NetworkManager.Instance.Send(syncPositionProtocol);
 
     }
 
@@ -139,7 +139,8 @@ public class SceneManager : Singleton<SceneManager>
         CustomTransform stf = syncPositionProtocol.Stf;
 
         GameObject tempTank = FindTanksById(role_id).SelfGameObject;
-        tempTank.transform.position = new Vector3(stf.X, stf.Y, stf.Z);;
+        //tempTank.transform.position = Vector3.Lerp(tempTank.transform.position, new Vector3(stf.X, stf.Y, stf.Z), Time.deltaTime);
+        tempTank.transform.position = new Vector3(stf.X, stf.Y, stf.Z);
         tempTank.transform.Rotate(0, stf.RY - tempTank.transform.localEulerAngles.y, 0, Space.Self);
     }
 
@@ -226,14 +227,6 @@ public class SceneManager : Singleton<SceneManager>
     }
 
     #endregion
-
-    //public void Test()
-    //{
-    //    CustomTransform customTransform = new CustomTransform(10, 10, 10, 0, 0, 0);
-    //    SyncPositionProtocol syncPositionProtocol = new SyncPositionProtocol(PlayerInfoManager.Instance.GetUserData().ID, customTransform);
-    //    NetworkManager.Instance.Send(syncPositionProtocol);
-    //}
-
 
 
 

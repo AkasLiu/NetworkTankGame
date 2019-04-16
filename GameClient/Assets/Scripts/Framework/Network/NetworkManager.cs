@@ -4,19 +4,32 @@ using System.Net.Sockets;
 using UnityEngine;
 using Common.Protocol;
 using System;
+using SLua;
 
+[CustomLuaClass]
 public class NetworkManager : Singleton<NetworkManager>
 {
     //Thread _socketThread; // 负责把协议接收好，放到协议队列
 
-    private const string IP = "192.168.1.121";
-    private const int Port = 6688;
+    float time = 0;
+
+    private static string IP = "192.168.1.116";
+    private static int Port = 6688;
 
     private Socket clientSocket;
     private Message msg = new Message();
     private Queue<MSG> msgQueue = new Queue<MSG>();
 
     public delegate void OnReceiveProtoDlg(object param);
+
+    public new static NetworkManager Instance
+    {
+        get
+        {
+            return Singleton<NetworkManager>.Instance;
+        }
+    }
+
 
     // Dictionary for proto id to callback list
     Dictionary<int, List<OnReceiveProtoDlg>> _protoID2CallbackListDict = new Dictionary<int, List<OnReceiveProtoDlg>>();
@@ -107,20 +120,16 @@ public class NetworkManager : Singleton<NetworkManager>
     public void Send(BaseProtocol proto)
     {
         byte[] data = proto.Encode();
+
+        //Debug.Log(Time.time- time);
+
+        //time = Time.time;
+
         clientSocket.Send(data);
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
-        //lock;
-        //// 取包
-        //unlock;
-        //// 分发
-
-        //if (_protoID2CallbackListDict[id] != null)
-        //    foreach (var callback in _protoID2CallbackListDict[id])
-        //        callback(param);
-
         while (true)
         {
             if (msgQueue.Count > 0)
@@ -129,7 +138,7 @@ public class NetworkManager : Singleton<NetworkManager>
                 {
                     MSG msg = msgQueue.Dequeue();
                     Debug.Log(msg.Protocol_Id);
-                    if (_protoID2CallbackListDict[msg.Protocol_Id] != null)
+                    if (_protoID2CallbackListDict.ContainsKey(msg.Protocol_Id) && _protoID2CallbackListDict[msg.Protocol_Id] != null)
                     {
                         for (int i = 0; i < _protoID2CallbackListDict[msg.Protocol_Id].Count; ++i)
                         {
@@ -167,5 +176,16 @@ public class NetworkManager : Singleton<NetworkManager>
             Debug.LogWarning("客户端无法关闭！" + e);
         }
     }
+
+    public void SetIP(string s)
+    {
+        IP = s;
+    }
+
+    public void PrintTest()
+    {
+        Debug.Log("test NetManager");
+    }
+
 
 }

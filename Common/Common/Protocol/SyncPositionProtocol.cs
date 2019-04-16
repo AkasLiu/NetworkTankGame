@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -56,11 +56,11 @@ namespace Common.Protocol
         {
             int dataLength = 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4 + 4;
 
-            List<byte> streamList = new List<byte>();
+                List<byte> streamList = new List<byte>();
 
-            streamList.AddRange(BitConverter.GetBytes(dataLength));
-            streamList.AddRange(BitConverter.GetBytes(Protocol_id));
-            streamList.AddRange(BitConverter.GetBytes(Role_Id));
+                streamList.AddRange(BitConverter.GetBytes(dataLength));
+                streamList.AddRange(BitConverter.GetBytes(Protocol_id));
+                streamList.AddRange(BitConverter.GetBytes(Role_Id));
             streamList.AddRange(BitConverter.GetBytes(Stf.X));
             streamList.AddRange(BitConverter.GetBytes(Stf.Y));
             streamList.AddRange(BitConverter.GetBytes(Stf.Z));

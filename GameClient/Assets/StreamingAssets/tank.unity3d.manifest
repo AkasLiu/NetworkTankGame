@@ -1,0 +1,136 @@
+ManifestFileVersion: 0
+CRC: 3856705435
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f999aa86f51b6d714b1cc0cc4bff09b0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7687cb68464e0f2e3d0ec2fdbb718036
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 64
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 575553740, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Prefabs/PumpJack.prefab
+- Assets/Sprites/FPS.png
+- Assets/Resources/Models/Tank.fbx
+- Assets/Resources/Models/PumpJack.fbx
+- Assets/Resources/Models/PalmTree.fbx
+- Assets/Resources/Materials/Brown.mat
+- Assets/Resources/Models/Rocks03.fbx
+- Assets/Resources/Models/Shell.fbx
+- Assets/Resources/Models/Dunes02.fbx
+- Assets/Resources/Prefabs/LevelArt.prefab
+- Assets/Resources/Prefabs/DustTrail.prefab
+- Assets/Resources/Materials/TankColour.mat
+- Assets/Resources/Models/Cactus.fbx
+- Assets/Resources/Models/OilStorage.fbx
+- Assets/Resources/Prefabs/Tank.prefab
+- Assets/Resources/Models/Column01.FBX
+- Assets/Resources/Models/Cliff.fbx
+- Assets/Resources/Models/Rocks01.fbx
+- Assets/Resources/Models/Crater01.fbx
+- Assets/Resources/Prefabs/UI/RegisterView.prefab
+- Assets/Resources/Materials/Green.mat
+- Assets/Resources/Materials/OilDrums.mat
+- Assets/Resources/Materials/TankLights.mat
+- Assets/Resources/Materials/Explosion.mat
+- Assets/Resources/Models/Column02.FBX
+- Assets/Resources/Prefabs/UI/UICanvas.prefab
+- Assets/Resources/Models/Radar.fbx
+- Assets/Resources/Prefabs/TankExplosion.prefab
+- Assets/Resources/Materials/YellowLight.mat
+- Assets/Resources/Models/Rocks02.fbx
+- Assets/Resources/Materials/BuildingWhite.mat
+- Assets/Resources/Prefabs/Shell.prefab
+- Assets/Resources/Models/Helipad.fbx
+- Assets/Resources/Materials/YellowDark.mat
+- Assets/Resources/Prefabs/UI/BattleView.prefab
+- Assets/Resources/Models/Cow.fbx
+- Assets/Resources/Prefabs/UI/GameHallView.prefab
+- Assets/Resources/Materials/BuildingMetal.mat
+- Assets/Resources/Materials/Gold.mat
+- Assets/Resources/Materials/BuildingGrey.mat
+- Assets/Sprites/Smoke.tif
+- Assets/Resources/Materials/BuildingStone.mat
+- Assets/Resources/Prefabs/UI/LoginView.prefab
+- Assets/Resources/Materials/BuildingGlass.mat
+- Assets/Resources/Materials/TankGrey.mat
+- Assets/Resources/Models/Tree.fbx
+- Assets/Resources/Models/Building01.fbx
+- Assets/Resources/Models/Terrain.fbx
+- Assets/Resources/Models/BustedTank.fbx
+- Assets/Resources/Models/Refinery.fbx
+- Assets/Resources/Prefabs/ShellExplosion.prefab
+- Assets/Resources/Prefabs/Env.prefab
+- Assets/Resources/Prefabs/UI/HotFixView.prefab
+- Assets/Resources/Models/Concrete.fbx
+- Assets/Resources/Materials/Dust.mat
+- Assets/Resources/Models/Dunes01.fbx
+- Assets/Resources/Models/Building02.fbx
+- Assets/Resources/Models/Ruins01.fbx
+- Assets/Sprites/ETCDefaultSprite.png
+Dependencies: []

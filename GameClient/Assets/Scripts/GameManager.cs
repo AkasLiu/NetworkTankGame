@@ -17,32 +17,33 @@ public class GameManager : MonoBehaviour {
 
     void Start()
     {
+        gameObject.AddComponent<HotFixManager>();
+
+
         NetworkManager.Instance.Start();
 
-        svr = new LuaSvr();
-        LuaSvr.mainState.loaderDelegate += LuaFileLoader;
-        svr.init(null, () =>
-        {
-            self = (LuaTable)svr.start("Entry");
-            update = (LuaFunction)self["update"];
-            ud = update.cast<UpdateDelegate>();
-        });
+        
 
-        //UIManager.Instance.Start();
-        //StateMachine.Instance.Start();
+        //svr = new LuaSvr();
+        //LuaSvr.mainState.loaderDelegate += LuaFileLoader;
+        //svr.init(null, () =>
+        //{
+        //    self = (LuaTable)svr.start("Entry");
+        //    update = (LuaFunction)self["update"];
+        //    ud = update.cast<UpdateDelegate>();
+        //});
+
     }
 
     void Update()
     {
         if (ud != null)
             ud(self);
-        //UIManager.Instance.Update();
     }
 
     void FixedUpdate()
     {
         NetworkManager.Instance.FixedUpdate();
-
     }
 
     void OnDestroy()

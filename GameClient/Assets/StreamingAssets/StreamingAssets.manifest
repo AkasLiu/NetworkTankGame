@@ -1,0 +1,13 @@
+ManifestFileVersion: 0
+CRC: 1786159852
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: tank.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: lua.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: test.unity3d
+      Dependencies: {}

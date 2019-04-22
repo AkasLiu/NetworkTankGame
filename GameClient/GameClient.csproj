@@ -236,6 +236,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Framework\Event\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Framework\HotFix\HotFixManager.cs" />
     <Compile Include="Assets\Scripts\Framework\MVC\ControllerBase.cs" />
     <Compile Include="Assets\Scripts\Framework\MVC\ModelBase.cs" />
     <Compile Include="Assets\Scripts\Framework\MVC\ViewBase.cs" />
@@ -1010,6 +1011,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\IngameDebugConsole\README.txt" />
+    <None Include="Assets\StreamingAssets\bundle_list.txt" />
+    <None Include="Assets\StreamingAssets\version.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -17,26 +17,25 @@ public class GameManager : MonoBehaviour {
 
     void Start()
     {
-        gameObject.AddComponent<HotFixManager>();
-
-
         NetworkManager.Instance.Start();
 
-        
-
-        //svr = new LuaSvr();
-        //LuaSvr.mainState.loaderDelegate += LuaFileLoader;
-        //svr.init(null, () =>
-        //{
-        //    self = (LuaTable)svr.start("Entry");
-        //    update = (LuaFunction)self["update"];
-        //    ud = update.cast<UpdateDelegate>();
-        //});
+        svr = new LuaSvr();
+        LuaSvr.mainState.loaderDelegate += LuaFileLoader;
+        svr.init(null, () =>
+        {
+            self = (LuaTable)svr.start("Entry");
+            update = (LuaFunction)self["update"];
+            ud = update.cast<UpdateDelegate>();
+        });
 
     }
 
+
+
     void Update()
     {
+        
+
         if (ud != null)
             ud(self);
     }
@@ -59,7 +58,14 @@ public class GameManager : MonoBehaviour {
             return null;
         }
         //string filename = Application.dataPath + "/Resources/Lua/" + strFile.Replace('.', '/') + ".lua";
-        string filename = Application.streamingAssetsPath + "/Resources/Lua/" + strFile.Replace('.', '/') + ".lua";
-        return File.ReadAllBytes(filename);
+        //string filename = Application.persistentDataPath + "/Lua/Out/" + strFile.Replace('.', '/') + ".lua.bytes";
+        Debug.Log(strFile);
+        string filename = "assets/hotfix/lua/" + strFile.Replace('.', '/') + ".bytes";
+        Debug.Log(filename);
+        AssetBundle ab = AssetBundle.LoadFromFile(Application.persistentDataPath + @"/lua.unity3d");
+        TextAsset textAsset = ab.LoadAsset<TextAsset>(filename) ;
+        ab.Unload(false);
+        //return File.ReadAllBytes(filename);
+        return textAsset.bytes;
     }
 }

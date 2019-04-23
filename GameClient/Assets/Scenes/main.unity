@@ -530,9 +530,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1065120229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9abed4105245a104fb204dc6a004c5d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 97a48326e37d39e438adb204700d8c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFinished: 0
 --- !u!4 &1065120231
 Transform:
   m_ObjectHideFlags: 0

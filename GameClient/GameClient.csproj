@@ -275,6 +275,7 @@
     <Compile Include="Assets\Scripts\GameLogic\State\StateType.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Test\DataInspector.cs" />
+    <Compile Include="Assets\Scripts\Test\Destory.cs" />
     <Compile Include="Assets\Scripts\Test\TankMove.cs" />
     <Compile Include="Assets\Slua\example\Circle.cs" />
     <Compile Include="Assets\Slua\example\Custom.cs" />

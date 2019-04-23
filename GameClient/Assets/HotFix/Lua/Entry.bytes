@@ -1,0 +1,22 @@
+import "UnityEngine"
+
+require("Utils")
+
+local entry = {}
+
+local  FSM = global.FSM
+local UIManager = global.UIManager
+
+function main(  )
+	UIManager:start()
+    FSM:start()
+    
+    --print("main")
+
+  	return entry
+end
+
+function entry:update(  )
+	global.UIManager:update()
+end
+

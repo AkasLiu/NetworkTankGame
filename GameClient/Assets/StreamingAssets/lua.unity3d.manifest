@@ -1,37 +1,45 @@
 ManifestFileVersion: 0
-CRC: 3743615820
+CRC: 1099109812
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6e118d4385b670f055bfcbe91d984d46
+    Hash: 378aa30cd07ef2d3e43de3beb90d714d
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+    Hash: 5e08d6751b030598af2cc6d363b72d2f
 HashAppended: 0
 ClassTypes:
 - Class: 49
   Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: aa35f0feac8a2f2459bb9b0f11233a7e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: b51a3b5f40c08405ca2dfb572d3558c0, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
 Assets:
-- Assets/HotFix/Out/GameHallView.lua.bytes
-- Assets/HotFix/Out/Class.lua.bytes
-- Assets/HotFix/Out/test.lua.bytes
-- Assets/HotFix/Out/Utils.lua.bytes
-- Assets/HotFix/Out/SingleTon.lua.bytes
-- Assets/HotFix/Out/BattleView.lua.bytes
-- Assets/HotFix/Out/LoginState.lua.bytes
-- Assets/HotFix/Out/SceneManager.lua.bytes
-- Assets/HotFix/Out/BattleState.lua.bytes
-- Assets/HotFix/Out/LoginController.lua.bytes
-- Assets/HotFix/Out/FSM.lua.bytes
-- Assets/HotFix/Out/LoginView.lua.bytes
-- Assets/HotFix/Out/BaseState.lua.bytes
-- Assets/HotFix/Out/UserData.lua.bytes
-- Assets/HotFix/Out/GameHallState.lua.bytes
-- Assets/HotFix/Out/test2.lua.bytes
-- Assets/HotFix/Out/EasyTouch.lua.bytes
-- Assets/HotFix/Out/BaseView.lua.bytes
-- Assets/HotFix/Out/UIManager.lua.bytes
-- Assets/HotFix/Out/Entry.lua.bytes
-- Assets/HotFix/Out/BattleController.lua.bytes
-- Assets/HotFix/Out/GameHallController.lua.bytes
+- Assets/HotFix/Lua/Entry.bytes
+- Assets/HotFix/Lua/SceneManager/EasyTouch.bytes
+- Assets/HotFix/Lua/MVC/Battle/BattleView.bytes
+- Assets/HotFix/Lua/MVC/Base/BaseView.bytes
+- Assets/HotFix/Lua/MVC/Login/LoginView.bytes
+- Assets/HotFix/Lua/Utils/SingleTon.bytes
+- Assets/HotFix/Lua/FSM/GameHallState.bytes
+- Assets/HotFix/Lua/test2.bytes
+- Assets/HotFix/Lua/FSM/BattleState.bytes
+- Assets/HotFix/Lua/MVC/Battle/BattleController.bytes
+- Assets/HotFix/Lua/FSM/FSM.bytes
+- Assets/HotFix/Lua/Utils.bytes
+- Assets/HotFix/Lua/FSM/BaseState.bytes
+- Assets/HotFix/Lua/Class.bytes
+- Assets/HotFix/Lua/MVC/Login/LoginController.bytes
+- Assets/HotFix/Lua/lua3rdmeta.asset
+- Assets/HotFix/Lua/test.bytes
+- Assets/HotFix/Lua/setting.asset
+- Assets/HotFix/Lua/MVC/GameHall/GameHallView.bytes
+- Assets/HotFix/Lua/FSM/LoginState.bytes
+- Assets/HotFix/Lua/MVC/Model/UserData.bytes
+- Assets/HotFix/Lua/MVC/GameHall/GameHallController.bytes
+- Assets/HotFix/Lua/MVC/UIManager.bytes
+- Assets/HotFix/Lua/SceneManager/SceneManager.bytes
 Dependencies: []

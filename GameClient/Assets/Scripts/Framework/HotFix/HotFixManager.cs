@@ -11,10 +11,10 @@ public class HotFixManager : MonoBehaviour
     GameObject hotfixView;
     string server_version;
     string client_version;
-    //string client_bundle_list_path = Application.persistentDataPath + @"/bundle_list.txt";
     Dictionary<string, string> server_bundle_list_Dict = new Dictionary<string, string>();
     Dictionary<string, string> client_bundle_list_Dict = new Dictionary<string, string>();
     Dictionary<string, string> new_bundle_list_Dict = new Dictionary<string, string>();
+    public bool isFinished = false;
 
 
     // Use this for initialization
@@ -54,6 +54,16 @@ public class HotFixManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (isFinished)
+        {
+            gameObject.AddComponent<GameManager>();
+            Destroy(this);            
+        }
+    }
+
+
     IEnumerator DownloadVersion()
     {
         string uri = @"http://localhost/StreamingAssets/version.txt";
@@ -72,7 +82,7 @@ public class HotFixManager : MonoBehaviour
             //finished
         }
 
-
+        isFinished = true;
     }
 
     IEnumerator DownloadBundleList()
@@ -119,10 +129,12 @@ public class HotFixManager : MonoBehaviour
                     StartCoroutine(SaveAB(kvp.Key));
                 }
             }
+
+            //todo 不一样
         }
 
         //修改两个txt  todo
-
+        StartCoroutine(AlertVersionAndBundleList("version.txt","bundle_list.txt"));
     }
 
 
@@ -133,6 +145,8 @@ public class HotFixManager : MonoBehaviour
         byte[] bufferFile = new byte[bufferLength];
         stream.Read(bufferFile, 0, Convert.ToInt32(bufferLength));
         string context = Encoding.UTF8.GetString(bufferFile, 0, bufferFile.Length);
+        stream.Close();
+        stream.Dispose();
         return context;
     }
 
@@ -146,8 +160,8 @@ public class HotFixManager : MonoBehaviour
 
         Debug.Log(uri);
 
-        Stream sw;
-        FileInfo t = new FileInfo(Application.persistentDataPath + @"/"+name);
+        Stream sw = null;
+        FileInfo t = new FileInfo(Application.persistentDataPath + @"/" + name);
         if (!t.Exists)
         {
             sw = t.Create();
@@ -162,7 +176,61 @@ public class HotFixManager : MonoBehaviour
             sw.Write(bytes, 0, bytes.Length);
             sw.Close();
             sw.Dispose();
+        }        
+       
+    }
+
+    IEnumerator AlertVersionAndBundleList(string version_name,string bundle_name)
+    {
+        string version_uri = @"http://localhost/StreamingAssets/" + version_name;
+        string bundle_uri = @"http://localhost/StreamingAssets/" + bundle_name;
+
+        UnityWebRequest request = UnityWebRequest.Get(version_uri);
+
+        yield return request.SendWebRequest();
+        byte[] bytes = request.downloadHandler.data;
+
+        Stream sw = null;
+        FileInfo t_3 = new FileInfo(Application.persistentDataPath + @"/" + version_name);
+        if (!t_3.Exists)
+        {
+            sw = t_3.Create();
+            sw.Write(bytes, 0, bytes.Length);
+            sw.Close();
+            sw.Dispose();
         }
+        else
+        {
+            t_3.Delete();
+            sw = t_3.Create();
+            sw.Write(bytes, 0, bytes.Length);
+            sw.Close();
+            sw.Dispose();
+        }
+
+        UnityWebRequest request_2 = UnityWebRequest.Get(bundle_uri);
+
+        yield return request_2.SendWebRequest();
+        byte[] bytes_2 = request_2.downloadHandler.data;
+
+        Stream sw_2 = null;
+        FileInfo t_2 = new FileInfo(Application.persistentDataPath + @"/" + bundle_name);
+        if (!t_2.Exists)
+        {
+            sw_2 = t_2.Create();
+            sw_2.Write(bytes_2, 0, bytes_2.Length);
+            sw_2.Close();
+            sw_2.Dispose();
+        }
+        else
+        {
+            t_2.Delete();
+            sw_2 = t_2.Create();
+            sw_2.Write(bytes_2, 0, bytes_2.Length);
+            sw_2.Close();
+            sw_2.Dispose();
+        }
+
     }
 
 }

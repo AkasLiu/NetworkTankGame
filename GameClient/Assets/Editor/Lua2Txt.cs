@@ -4,25 +4,28 @@ using UnityEngine;
 using System.IO;
 using UnityEditor;
 
-public class Lua2Txt {
+public class Lua2Txt
+{
 
-    [MenuItem("LuatoTxt/lua2txt")]
+    [MenuItem("LuaAndTxt/lua2txt")]
     static void LuaToTxt()
     {
-        string[] files = Directory.GetFiles("Assets/HotFix/Lua", "*.lua", SearchOption.AllDirectories);
-
-        string dir = "Assets/HotFix/Out";
-        if (Directory.Exists(dir) == false)
-        {
-            Directory.CreateDirectory(dir);
-        }
+        string[] files = Directory.GetFiles("Assets/HotFix/Lua/", "*.lua", SearchOption.AllDirectories);
 
         for (int i = 0; i < files.Length; i++)
         {
-            Debug.Log(files[i]);
-            string fname = Path.GetFileName(files[i]);
-            FileUtil.CopyFileOrDirectory(files[i], "Assets/HotFix/Out/" + fname + ".bytes");
+            File.Move(files[i], files[i].Replace(".lua",".bytes"));
         }
+    }
 
+    [MenuItem("LuaAndTxt/txt2lua")]
+    static void TxtToLua()
+    {
+        string[] files = Directory.GetFiles("Assets/HotFix/Lua", "*.bytes", SearchOption.AllDirectories);
+
+        for (int i = 0; i < files.Length; i++)
+        {
+            File.Move(files[i], files[i].Replace(".bytes", ".lua"));
+        }
     }
 }

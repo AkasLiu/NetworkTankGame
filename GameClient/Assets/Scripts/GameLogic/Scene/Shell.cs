@@ -17,14 +17,15 @@ public class Shell : MonoBehaviour {
 
     GameObject shellExplosionPrefab;
 
-    private void Start()
+    private void Awake()
     {
         shellExplosionPrefab = Resources.Load("Prefabs/ShellExplosion") as GameObject;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        Debug.Log(collision);
+
         GameObject shellExplosion = Instantiate(shellExplosionPrefab, this.gameObject.transform.position, Quaternion.identity);
 
         if (collision.gameObject.name == "Tank(Clone)")

@@ -10,12 +10,12 @@ namespace Common.Protocol
 
         public FireProtocol()
         {
-            Protocol_id = (int)ProtocolId.Fire;
+            Protocol_id = (int)ProtocolID.Fire;
         }
 
         public FireProtocol(int role_Id)
         {
-            Protocol_id = (int)ProtocolId.Fire;
+            Protocol_id = (int)ProtocolID.Fire;
             Role_id = role_Id;
         }
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SLua;
-using System.IO;
 
 public class GameManager : MonoBehaviour {
 
@@ -17,6 +16,7 @@ public class GameManager : MonoBehaviour {
 
     void Start()
     {
+
         NetworkManager.Instance.Start();
 
         svr = new LuaSvr();
@@ -56,16 +56,12 @@ public class GameManager : MonoBehaviour {
         if (strFile == null)
         {
             return null;
-        }
-        //string filename = Application.dataPath + "/Resources/Lua/" + strFile.Replace('.', '/') + ".lua";
-        //string filename = Application.persistentDataPath + "/Lua/Out/" + strFile.Replace('.', '/') + ".lua.bytes";
-        Debug.Log(strFile);
+        }        
+
         string filename = "assets/hotfix/lua/" + strFile.Replace('.', '/') + ".bytes";
-        Debug.Log(filename);
         AssetBundle ab = AssetBundle.LoadFromFile(Application.persistentDataPath + @"/lua.unity3d");
-        TextAsset textAsset = ab.LoadAsset<TextAsset>(filename) ;
+        TextAsset textAsset = ab.LoadAsset<TextAsset>(filename);
         ab.Unload(false);
-        //return File.ReadAllBytes(filename);
         return textAsset.bytes;
     }
 }

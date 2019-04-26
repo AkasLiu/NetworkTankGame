@@ -6,25 +6,25 @@ namespace Common.Protocol
 {
     public class SyncPositionProtocol : BaseProtocol
     {
-        public CustomTransform Stf { get; set; }
+        public MyTransform Stf { get; set; }
         public int Role_Id { get; set; }
 
         public SyncPositionProtocol()
         {
-            Protocol_id = (int)ProtocolId.SyncPosition;
-            Stf = new CustomTransform();
+            Protocol_id = (int)ProtocolID.SyncPosition;
+            Stf = new MyTransform();
         }
 
         public SyncPositionProtocol(int role_id, float x, float y, float z, float rx, float ry, float rz)
         {
-            Protocol_id = (int)ProtocolId.SyncPosition;
+            Protocol_id = (int)ProtocolID.SyncPosition;
             Role_Id = role_id;
-            Stf = new CustomTransform(x, y, z, rx, ry, rz);
+            Stf = new MyTransform(x, y, z, rx, ry, rz);
         }
 
-        public SyncPositionProtocol(int role_id, CustomTransform stf)
+        public SyncPositionProtocol(int role_id, MyTransform stf)
         {
-            Protocol_id = (int)ProtocolId.SyncPosition;
+            Protocol_id = (int)ProtocolID.SyncPosition;
             Role_Id = role_id;
             this.Stf = stf;
         }

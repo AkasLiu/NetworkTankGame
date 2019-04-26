@@ -10,12 +10,12 @@ namespace Common.Protocol
 
         public ResultProtocol()
         {
-            Protocol_id = 1003;
+            Protocol_id = (int)ProtocolID.ReturnResult;
         }
 
         public ResultProtocol(bool result)
         {
-            Protocol_id = 1003;
+            Protocol_id = (int)ProtocolID.ReturnResult;
             Result = result;
         }
 

@@ -12,10 +12,24 @@ function sceneManager:start(  )
 	self.env = GameObject.Instantiate(self.envPrefab, Vector3.zero, Quaternion.identity)
 
 	--注册协议
-	NetworkManager.Instance:RegisterProto(ProtocolId.SyncPosition, packFunction(self,self.syncPosition))
-	NetworkManager.Instance:RegisterProto(ProtocolId.Fire, packFunction(self,self.fireShell))
-	NetworkManager.Instance:RegisterProto(ProtocolId.Die, packFunction(self,self.die))
-    NetworkManager.Instance:RegisterProto(ProtocolId.Revive, packFunction(self,self.revive))
+	NetworkManager.Instance:RegisterProto(ProtocolID.SyncPosition, packFunction(self,self.syncPosition))
+	NetworkManager.Instance:RegisterProto(ProtocolID.Fire, packFunction(self,self.fireShell))
+	NetworkManager.Instance:RegisterProto(ProtocolID.Die, packFunction(self,self.die))
+    NetworkManager.Instance:RegisterProto(ProtocolID.Revive, packFunction(self,self.revive))
+    NetworkManager.Instance:RegisterProto(ProtocolID.ExitGame,packFunction(self,self.playerExit))
+end
+
+function sceneManager:playerExit( param )
+	local exitGameProtocol = Common.Protocol.ExitGameProtocol()
+	exitGameProtocol:Decode(param)
+	if next(tanks) ~= nil then
+		for k,v in pairs(tanks) do
+			if k == exitGameProtocol.Role_id then
+				GameObject.Destroy(v.gameObject)
+				return 
+			end
+		end		
+	end
 end
 
 function sceneManager:exit(  )
@@ -31,13 +45,17 @@ function sceneManager:exit(  )
 		tanks = {}
 	end
 
+	local exitGameProtocol = Common.Protocol.ExitGameProtocol(userData.id)
+	NetworkManager.Instance:Send(exitGameProtocol)
+
 	GameObject.Destroy(self.env)
 
 	--反注册协议
-	NetworkManager.Instance:UnregisterProto(ProtocolId.SyncPosition, packFunction(self,self.syncPosition))
-	NetworkManager.Instance:UnregisterProto(ProtocolId.Fire, packFunction(self,self.fireShell))
-	NetworkManager.Instance:UnregisterProto(ProtocolId.Die, packFunction(self,self.die))
-    NetworkManager.Instance:UnregisterProto(ProtocolId.Revive, packFunction(self,self.revive))
+	NetworkManager.Instance:UnregisterProto(ProtocolID.SyncPosition, packFunction(self,self.syncPosition))
+	NetworkManager.Instance:UnregisterProto(ProtocolID.Fire, packFunction(self,self.fireShell))
+	NetworkManager.Instance:UnregisterProto(ProtocolID.Die, packFunction(self,self.die))
+    NetworkManager.Instance:UnregisterProto(ProtocolID.Revive, packFunction(self,self.revive))
+    NetworkManager.Instance:UnregisterProto(ProtocolID.ExitGame,packFunction(self,self.playerExit))
 end
 
 function sceneManager:die( param )
@@ -87,9 +105,6 @@ end
 function sceneManager:fireShell( param )
 	local fireProtocol = Common.Protocol.FireProtocol()
 	fireProtocol:Decode(param)
-	print(fireProtocol.Role_id)
-	print(tanks[fireProtocol.Role_id])
-	print(tanks[fireProtocol.Role_id].gameObject)
 	local firingTank = tanks[fireProtocol.Role_id].gameObject
 	local fireTransform = firingTank.transform:Find("FirePosition")
 	local shell = GameObject.Instantiate(self.shellPrefab,fireTransform.position,fireTransform.rotation)
@@ -108,6 +123,8 @@ function sceneManager:syncPosition( param )
 		temptank.transform.position = Vector3(self.stf.X, self.stf.Y, self.stf.Z)
 		temptank.transform:Rotate(0, self.stf.RY - temptank.transform.localEulerAngles.y, 0, Space.Self)
 	end
+
+	print("Sync ".. self.syncPositionProtocol.Role_Id)
 end
 
 
@@ -116,8 +133,8 @@ function sceneManager:revive( param )
 	local reviveProtocol = Common.Protocol.ReviveProtocol()
 	reviveProtocol:Decode(param)
 
-	local customTransform = Common.CustomTransform(9.0, -1.0, -7.0, 0.0, 0.0, 0.0)
-	self:generateTank(reviveProtocol.Role_id,customTransform)
+	local myTransform = Common.MyTransform(9.0, -1.0, -7.0, 0.0, 0.0, 0.0)
+	self:generateTank(reviveProtocol.Role_id,myTransform)
 end
 
 function sceneManager:onRecevieMove( id, hor, ver )

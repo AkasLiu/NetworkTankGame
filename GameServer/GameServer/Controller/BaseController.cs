@@ -14,10 +14,9 @@ namespace GameServer.Controller
 
         public BaseController()
         {
-            ContollerId = (int)ProtocolId.None;
+            ContollerId = (int)ProtocolID.None;
         }
 
-        public virtual byte[] HandleRequest(byte[] data, Client client, Server server) { return null; }
-        //public virtual void DefaultHandle();
+        public virtual void HandleRequest(byte[] data, Client client, Server server) { }
     }
 }

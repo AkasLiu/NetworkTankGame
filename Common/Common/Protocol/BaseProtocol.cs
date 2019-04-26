@@ -4,11 +4,14 @@ using System.Text;
 
 namespace Common.Protocol
 {
+    /// <summary>
+    /// protocol基类
+    /// </summary>
     public abstract class BaseProtocol
     {
         public BaseProtocol()
         {
-            Protocol_id = (int)ProtocolId.None;
+            Protocol_id = (int)ProtocolID.None;
         }
 
         public int Protocol_id { get; set; }      

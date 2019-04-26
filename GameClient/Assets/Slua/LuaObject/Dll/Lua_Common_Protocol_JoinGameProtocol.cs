@@ -47,7 +47,7 @@ public class Lua_Common_Protocol_JoinGameProtocol : LuaObject {
 			else if(argc==3){
 				System.Int32 a1;
 				checkType(l,2,out a1);
-				Common.CustomTransform a2;
+				Common.MyTransform a2;
 				checkType(l,3,out a2);
 				o=new Common.Protocol.JoinGameProtocol(a1,a2);
 				pushValue(l,true);
@@ -136,7 +136,7 @@ public class Lua_Common_Protocol_JoinGameProtocol : LuaObject {
 	}
 	[SLua.MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	[UnityEngine.Scripting.Preserve]
-	static public int get_CTF(IntPtr l) {
+	static public int get_mytf(IntPtr l) {
 		try {
 			#if DEBUG
 			var method = System.Reflection.MethodBase.GetCurrentMethod();
@@ -149,7 +149,7 @@ public class Lua_Common_Protocol_JoinGameProtocol : LuaObject {
 			#endif
 			Common.Protocol.JoinGameProtocol self=(Common.Protocol.JoinGameProtocol)checkSelf(l);
 			pushValue(l,true);
-			pushValue(l,self.CTF);
+			pushValue(l,self.mytf);
 			return 2;
 		}
 		catch(Exception e) {
@@ -167,7 +167,7 @@ public class Lua_Common_Protocol_JoinGameProtocol : LuaObject {
 	}
 	[SLua.MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	[UnityEngine.Scripting.Preserve]
-	static public int set_CTF(IntPtr l) {
+	static public int set_mytf(IntPtr l) {
 		try {
 			#if DEBUG
 			var method = System.Reflection.MethodBase.GetCurrentMethod();
@@ -179,9 +179,9 @@ public class Lua_Common_Protocol_JoinGameProtocol : LuaObject {
 			#endif
 			#endif
 			Common.Protocol.JoinGameProtocol self=(Common.Protocol.JoinGameProtocol)checkSelf(l);
-			Common.CustomTransform v;
+			Common.MyTransform v;
 			checkType(l,2,out v);
-			self.CTF=v;
+			self.mytf=v;
 			pushValue(l,true);
 			return 1;
 		}
@@ -267,7 +267,7 @@ public class Lua_Common_Protocol_JoinGameProtocol : LuaObject {
 		getTypeTable(l,"Common.Protocol.JoinGameProtocol");
 		addMember(l,Decode);
 		addMember(l,Encode);
-		addMember(l,"CTF",get_CTF,set_CTF,true);
+		addMember(l,"mytf",get_mytf,set_mytf,true);
 		addMember(l,"Role_Id",get_Role_Id,set_Role_Id,true);
 		createTypeMetatable(l,constructor, typeof(Common.Protocol.JoinGameProtocol),typeof(Common.Protocol.BaseProtocol));
 	}

@@ -41,7 +41,6 @@ function battleView:update(  )
 			tank.transform.position.x, tank.transform.position.y, tank.transform.position.z,
 			tank.transform.localEulerAngles.x, tank.transform.localEulerAngles.y, tank.transform.localEulerAngles.z)
 		NetworkManager.Instance:Send(syncPositionProtocol)
-		print("sendsync"..userData.id)
 	end
 end
 

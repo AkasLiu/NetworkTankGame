@@ -10,12 +10,12 @@ namespace Common.Protocol
 
         public DieProtocol()
         {
-            Protocol_id = (int)ProtocolId.Die;
+            Protocol_id = (int)ProtocolID.Die;
         }
 
         public DieProtocol(int role_Id)
         {
-            Protocol_id = (int)ProtocolId.Die;
+            Protocol_id = (int)ProtocolID.Die;
             Role_id = role_Id;
         }
 

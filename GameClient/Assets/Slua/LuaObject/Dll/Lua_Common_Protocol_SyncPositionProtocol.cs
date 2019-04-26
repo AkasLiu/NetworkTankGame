@@ -47,7 +47,7 @@ public class Lua_Common_Protocol_SyncPositionProtocol : LuaObject {
 			else if(argc==3){
 				System.Int32 a1;
 				checkType(l,2,out a1);
-				Common.CustomTransform a2;
+				Common.MyTransform a2;
 				checkType(l,3,out a2);
 				o=new Common.Protocol.SyncPositionProtocol(a1,a2);
 				pushValue(l,true);
@@ -179,7 +179,7 @@ public class Lua_Common_Protocol_SyncPositionProtocol : LuaObject {
 			#endif
 			#endif
 			Common.Protocol.SyncPositionProtocol self=(Common.Protocol.SyncPositionProtocol)checkSelf(l);
-			Common.CustomTransform v;
+			Common.MyTransform v;
 			checkType(l,2,out v);
 			self.Stf=v;
 			pushValue(l,true);

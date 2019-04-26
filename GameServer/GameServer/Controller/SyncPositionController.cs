@@ -10,39 +10,37 @@ namespace GameServer.Controller
 {
     class SyncPositionController : BaseController
     {
-        long timeStamp = 0;
+        //long timeStamp = 0;
 
         public SyncPositionController()
         {
-            ContollerId = (int)ProtocolId.SyncPosition;
+            ContollerId = (int)ProtocolID.SyncPosition;
         }
 
-        public override byte[] HandleRequest(byte[] data, Client client, Server server)
+        public override void HandleRequest(byte[] data, Client client, Server server)
         {
 
-            long a = DateTime.Now.Ticks / 10000 - timeStamp;
-            timeStamp = DateTime.Now.Ticks / 10000;
-            if (a > 50)
-            {
-                Console.WriteLine(a);
-            }
+            //long a = DateTime.Now.Ticks / 10000 - timeStamp;
+            //timeStamp = DateTime.Now.Ticks / 10000;
+            //if (a > 50)
+            //{
+            //    Console.WriteLine(a);
+            //}
 
             SyncPositionProtocol syncPositionProtocol = new SyncPositionProtocol();
             syncPositionProtocol.Decode(data);
 
             //1，更新当前客户端的服务器位置信息
             //2,将当前位置广播给所有客户端
-            client.playerData.stf = syncPositionProtocol.Stf;
-       
-            foreach (Client c in server.ClientList)
+            //client.playerData.Mytf = syncPositionProtocol.Stf;
+
+            foreach (Client c in server.clientsInRoom(client.RoomID))
             {
                 if (c != client)
                 {
                     server.SendResponse(data, c);
                 }
             }
-
-            return null;
 
         }
     }

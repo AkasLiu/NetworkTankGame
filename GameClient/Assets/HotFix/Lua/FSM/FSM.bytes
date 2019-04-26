@@ -1,10 +1,12 @@
-local  FSM = class()
+local FSM = class()
 local loginState = require("FSM/LoginState")
 local gameHallState = require("FSM/GameHallState")
 local battleState = require("FSM/BattleState")
+local registerState = require("FSM/RegisterState")
 
 function FSM:ctor(  )
 	self.loginState = loginState:new()
+	self.registerState = registerState:new()
 	self.gameHallState = gameHallState:new()
 	self.battleState = battleState:new()
 	self.currentState = self.loginState
@@ -24,14 +26,6 @@ function FSM:changeState( stateType )
 	nextState:enter()
 
 	self.currentState = nextState
-end
-
-function FSM:FindState( stateType )
-	--[[for k,v in ipairs(self) do
-		if(type(v) == stateType)
-			break
-		end
-	end--]]
 end
 
 return FSM

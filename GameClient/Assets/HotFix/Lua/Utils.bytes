@@ -8,11 +8,16 @@ global = {
 
 	loginController = require("MVC/Login/LoginController"):new(),
 
+	registerController = require("MVC/Register/RegisterController"):new(),
+
 	gameHallController = require("MVC/GameHall/GameHallController"):new(),
 
 	battleController = require("MVC/Battle/BattleController"):new(),
 
 	sceneManager = require("SceneManager/SceneManager"):new(),
+
+	
+
 }
 
 userData = {}

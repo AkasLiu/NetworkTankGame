@@ -11,12 +11,12 @@ namespace Common.Protocol
 
         public ReviveProtocol()
         {
-            Protocol_id = (int)ProtocolId.Revive;
+            Protocol_id = (int)ProtocolID.Revive;
         }
 
         public ReviveProtocol(int role_Id)
         {
-            Protocol_id = (int)ProtocolId.Revive;
+            Protocol_id = (int)ProtocolID.Revive;
             Role_id = role_Id;
         }
 

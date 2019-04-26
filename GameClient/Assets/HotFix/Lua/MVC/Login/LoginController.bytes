@@ -5,11 +5,13 @@ function loginController:ctor(  )
 end
 
 function loginController:registerProto(  )
-	NetworkManager.Instance:RegisterProto(ProtocolId.ReturnUserDataProtocol,packFunction(self,self.verify))
+	NetworkManager.Instance:RegisterProto(ProtocolID.ReturnResult,packFunction(self,self.verify))
+	NetworkManager.Instance:RegisterProto(ProtocolID.ReturnUserDataProtocol,packFunction(self,self.saveUserData))
 end
 
 function loginController:unregisterProto(  )
-	NetworkManager.Instance:UnregisterProto(ProtocolId.ReturnUserDataProtocol,packFunction(self,self.verify))
+	NetworkManager.Instance:UnregisterProto(ProtocolID.ReturnResult,packFunction(self,self.verify))
+	NetworkManager.Instance:UnregisterProto(ProtocolID.ReturnUserDataProtocol,packFunction(self,self.saveUserData))
 end
 
 function loginController:login(  )
@@ -25,15 +27,21 @@ function loginController:closeView(  )
 end
 
 function loginController:verify( param )
+	local resultProtocol = Common.Protocol.ResultProtocol()
+	resultProtocol:Decode(param)
+	if resultProtocol.Result then 
+		self.loginView:showTip("登陆成功")
+	else 
+		self.loginView:showTip("登陆失败，账号或密码错误")
+	end
+end
+
+function loginController:saveUserData( param )
 	local returnUserData = Common.Protocol.ReturnUserDataProtocol()
 	returnUserData:Decode(param)
-
-	if returnUserData.Result then
-		userData.id =  returnUserData.Id
-		userData.username =	returnUserData.Username
-		global.FSM:changeState("FSM/GameHallState")
-	end
-
+	userData.id =  returnUserData.Id
+	userData.username =	returnUserData.Username
+	global.FSM:changeState("FSM/GameHallState")
 end
 
 return  loginController

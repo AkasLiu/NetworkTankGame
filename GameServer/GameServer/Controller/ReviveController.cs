@@ -12,22 +12,21 @@ namespace GameServer.Controller
     {
         public ReviveController()
         {
-            ContollerId = (int)ProtocolId.Revive;
+            ContollerId = (int)ProtocolID.Revive;
         }
 
-        public override byte[] HandleRequest(byte[] data, Client client, Server server)
+        public override void HandleRequest(byte[] data, Client client, Server server)
         {
             base.HandleRequest(data, client, server);
 
             ReviveProtocol reviveProtocol = new ReviveProtocol();
             reviveProtocol.Decode(data);
 
-            foreach (Client c in server.ClientList)
+            foreach (Client c in server.clientsInRoom(client.RoomID))
             {
                 server.SendResponse(data, c); 
             }
 
-            return null;
         }
     }
 }

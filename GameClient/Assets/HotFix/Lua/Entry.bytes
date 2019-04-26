@@ -9,9 +9,7 @@ local UIManager = global.UIManager
 
 function main(  )
 	UIManager:start()
-    FSM:start()
-    
-    --print("main")
+    FSM:start()  
 
   	return entry
 end
@@ -19,4 +17,3 @@ end
 function entry:update(  )
 	global.UIManager:update()
 end
-

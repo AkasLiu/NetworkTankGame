@@ -12,23 +12,25 @@ namespace GameServer.Controller
     {
         public ExitGameController()
         {
-            ContollerId = (int)ProtocolId.ExitGame;
+            ContollerId = (int)ProtocolID.ExitGame;
         }
 
-        public override byte[] HandleRequest(byte[] data, Client client, Server server)
+        public override void HandleRequest(byte[] data, Client client, Server server)
         {
             base.HandleRequest(data, client, server);
 
-            foreach (Client c in server.ClientList)
+            foreach (Client c in server.clientsInRoom(client.RoomID))
             {
                 if(c != client)
-                {
+                {                    
                     server.SendResponse(data, c);
-
                 }
             }
 
-            return null;
+            server.clientsInRoom(client.RoomID).Remove(client);
+            server.FindRoomById(client.RoomID).CurrentCount--;
+            client.RoomID = -1;
+            //移除房间
         }
     }
 }

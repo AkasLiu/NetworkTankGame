@@ -38,22 +38,19 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protocol\JoinGameProtocol.cs" />
-    <Compile Include="Protocol\ProtocolId.cs" />
+    <Compile Include="Protocol\ProtocolID.cs" />
     <Compile Include="Protocol\BaseProtocol.cs" />
-    <Compile Include="Protocol\CreateGameObjectProtocol.cs" />
-    <Compile Include="Protocol\DamageProtocol.cs" />
     <Compile Include="Protocol\DieProtocol.cs" />
     <Compile Include="Protocol\ExitGameProtocol.cs" />
     <Compile Include="Protocol\FireProtocol.cs" />
     <Compile Include="Protocol\LoginProtocol.cs" />
-    <Compile Include="Protocol\MoveProtocol.cs" />
     <Compile Include="Protocol\RegisterProtocol.cs" />
     <Compile Include="Protocol\ResultProtocol.cs" />
     <Compile Include="Protocol\ReturnUserDataProtocol.cs" />
     <Compile Include="Protocol\ReviveProtocol.cs" />
     <Compile Include="Protocol\StartGameProtocol.cs" />
     <Compile Include="Protocol\SyncPositionProtocol.cs" />
-    <Compile Include="CustomTransform.cs" />
+    <Compile Include="MyTransform.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

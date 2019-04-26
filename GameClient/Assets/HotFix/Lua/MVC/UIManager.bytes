@@ -19,4 +19,6 @@ function UIManager:update(  )
 	self.currentView:update()
 end
 
+
+
 return UIManager

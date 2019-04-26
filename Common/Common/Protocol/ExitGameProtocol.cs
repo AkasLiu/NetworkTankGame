@@ -10,12 +10,12 @@ namespace Common.Protocol
 
         public ExitGameProtocol()
         {
-            Protocol_id = (int)ProtocolId.ExitGame;
+            Protocol_id = (int)ProtocolID.ExitGame;
         }
 
         public ExitGameProtocol(int role_Id)
         {
-            Protocol_id = (int)ProtocolId.ExitGame;
+            Protocol_id = (int)ProtocolID.ExitGame;
             Role_id = role_Id;
         }
 

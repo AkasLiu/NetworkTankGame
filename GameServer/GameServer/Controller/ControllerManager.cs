@@ -21,21 +21,20 @@ namespace GameServer.Controller
 
         void InitController()
         {
-            controllerDict.Add((int)ProtocolId.None, new BaseController());
-            controllerDict.Add((int)ProtocolId.Login, new LoginController());
-            controllerDict.Add((int)ProtocolId.StartGame, new StartGameController());
-            controllerDict.Add((int)ProtocolId.SyncPosition,new SyncPositionController());
-            controllerDict.Add((int)ProtocolId.Fire, new FireController());
-            controllerDict.Add((int)ProtocolId.Die, new DieController());
-            controllerDict.Add((int)ProtocolId.Revive, new ReviveController());
-            controllerDict.Add((int)ProtocolId.ExitGame, new ExitGameController());
-
+            controllerDict.Add((int)ProtocolID.None, new BaseController());
+            controllerDict.Add((int)ProtocolID.Login, new LoginController());
+            controllerDict.Add((int)ProtocolID.Register, new RegisterController());
+            controllerDict.Add((int)ProtocolID.StartGame, new StartGameController());
+            controllerDict.Add((int)ProtocolID.SyncPosition,new SyncPositionController());
+            controllerDict.Add((int)ProtocolID.Fire, new FireController());
+            controllerDict.Add((int)ProtocolID.Die, new DieController());
+            controllerDict.Add((int)ProtocolID.Revive, new ReviveController());
+            controllerDict.Add((int)ProtocolID.ExitGame, new ExitGameController());
         }
 
         public void HandleRequest(int protocol_Id, byte[] data, Client client, Server server)
         {
             BaseController controller;
-            byte[] stream;
             //根据protocol_Id查到对应的controller
             bool isGet = controllerDict.TryGetValue(protocol_Id, out controller);
             //TODO 做成日志
@@ -46,10 +45,10 @@ namespace GameServer.Controller
             }
             else
             {
-                stream = controller.HandleRequest(data, client,server);
+                //stream = controller.HandleRequest(data, client,server);
+                controller.HandleRequest(data, client, server);
             }
-
-            server.SendResponse(stream, client);
+            //server.SendResponse(stream, client);
         }
     }
 }

@@ -12,22 +12,21 @@ namespace GameServer.Controller
     {
         public DieController()
         {
-            ContollerId = (int)ProtocolId.Die;
+            ContollerId = (int)ProtocolID.Die;
         }
 
-        public override byte[] HandleRequest(byte[] data, Client client, Server server)
+        public override void HandleRequest(byte[] data, Client client, Server server)
         {
             base.HandleRequest(data, client, server);
 
             DieProtocol dieProtocol = new DieProtocol();
             dieProtocol.Decode(data);
 
-            foreach (Client c in server.ClientList)
+            foreach (Client c in server.clientsInRoom(client.RoomID))
             {
                 server.SendResponse(data, c);
             }
 
-            return null;
         }
     }
 }

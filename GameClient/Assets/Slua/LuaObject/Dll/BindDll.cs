@@ -5,8 +5,8 @@ namespace SLua {
 	public class BindDll {
 		public static Action<IntPtr>[] GetBindList() {
 			Action<IntPtr>[] list= {
-				Lua_ProtocolId.reg,
-				Lua_Common_CustomTransform.reg,
+				Lua_ProtocolID.reg,
+				Lua_Common_MyTransform.reg,
 				Lua_Common_Protocol_BaseProtocol.reg,
 				Lua_Common_Protocol_JoinGameProtocol.reg,
 				Lua_Common_Protocol_DieProtocol.reg,

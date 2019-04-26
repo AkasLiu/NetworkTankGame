@@ -18,16 +18,10 @@ namespace GameServer.Servers
         private Socket clientSocket;
         private Server server;
         private Message msg = new Message();
-        //private User user;
+        public User currentUser;
         public PlayerData playerData = new PlayerData();
-
+        public int RoomID { get; set; }
         private byte[] data = new byte[1024];        
-
-        //public bool IsDie()
-        //{
-        //    return HP <= 0;
-        //}
-
         public MySqlConnection MySQLConn { get; }
 
         public Client() { }
@@ -36,20 +30,9 @@ namespace GameServer.Servers
             this.clientSocket = clientSocket;
             this.server = server;
             MySQLConn = ConnHelper.Connect();
-
+            currentUser = new User();
+            RoomID = -1;
         }
-
-        //public int GetUserId()
-        //{
-        //    return user.Id;
-        //}
-
-        //public string GetUsername()
-        //{
-        //    return user.Username;
-        //}
-
-        //public void GetPlayerData
 
         public void Start()
         {
@@ -58,7 +41,7 @@ namespace GameServer.Servers
             clientSocket.BeginReceive(msg.Data, msg.StartIndex, msg.RemainSize, SocketFlags.None, ReceiveCallback, null);
         }
 
-        //边接收边处理
+        //异步处理数据
         private void ReceiveCallback(IAsyncResult ar)
         {
             try
@@ -67,9 +50,7 @@ namespace GameServer.Servers
                 if (count == 0)
                 {
                     Close();
-
                 }
-                //TODO 处理接收的数据
                 msg.ReadMessage(count,OnProcessMessage);
                 Start();
             }
@@ -100,7 +81,13 @@ namespace GameServer.Servers
                     Console.WriteLine("有一个客户端断开连接");
                     clientSocket.Close();
                 }
-                server.RemoveClient(this);
+                if (RoomID != -1)
+                {
+                    server.clientsInRoom(RoomID).Remove(this);
+
+                }
+                
+                server.RemoveClient(this);          
             }
         }
     }

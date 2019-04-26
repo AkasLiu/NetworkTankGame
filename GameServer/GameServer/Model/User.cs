@@ -15,6 +15,11 @@ namespace GameServer.Model
             this.Password = passsword;
         }
 
+        public User()
+        {
+
+        }
+
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }

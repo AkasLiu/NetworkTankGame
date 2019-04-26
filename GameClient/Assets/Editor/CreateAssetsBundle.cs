@@ -9,14 +9,18 @@ public class CreateAssetsBundle : MonoBehaviour {
 
     [MenuItem("Assets/BuildeAssetBundel")]
     static void BuildeAssetBundles()
-    {        
+    {                
         string dir = "Assets/StreamingAssets";
+        foreach(string s in Directory.GetFiles(dir))
+        {
+            File.Delete(s);
+        }
+
         if (Directory.Exists(dir) == false)
         {
             Directory.CreateDirectory(dir);
         }
-        BuildPipeline.BuildAssetBundles(dir, BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows64);
-
+        BuildPipeline.BuildAssetBundles(dir, BuildAssetBundleOptions.None, BuildTarget.Android);
 
         CreateCRCList();
         CreateVsersion();
@@ -34,9 +38,7 @@ public class CreateAssetsBundle : MonoBehaviour {
         fs = new FileStream(bundle_list_path, FileMode.Create);
         wr = new StreamWriter(fs);
         foreach (FileInfo fi in fis)
-        {
-            //print(fi.DirectoryName);
-
+        {           
             byte[] buff = new byte[fi.Length];
             FileStream fsbuf = fi.OpenRead();
             fsbuf.Read(buff, 0, Convert.ToInt32(fsbuf.Length));
@@ -57,8 +59,8 @@ public class CreateAssetsBundle : MonoBehaviour {
         StreamWriter wr = null;
       
         string versionPath = @"Assets/StreamingAssets/version.txt";
-        string version = @"0.0.3";
-        fs = new FileStream(versionPath, FileMode.Create);
+        string version = @"1.1.0";
+        fs = new FileStream(versionPath, FileMode.CreateNew);
         wr = new StreamWriter(fs);
         wr.WriteLine(version);       
         wr.Close();

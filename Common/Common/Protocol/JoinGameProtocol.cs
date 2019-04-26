@@ -4,28 +4,29 @@ using System.Text;
 
 namespace Common.Protocol
 {
+    //生成坦克
     public class JoinGameProtocol : BaseProtocol
     {
-        public CustomTransform CTF { get; set; }
+        public MyTransform mytf { get; set; }
         public int Role_Id { get; set; }
 
         public JoinGameProtocol()
         {
-            Protocol_id = (int)ProtocolId.JoinGame;
-            CTF = new CustomTransform();
+            Protocol_id = (int)ProtocolID.JoinGame;
+            mytf = new MyTransform();
         }
 
         public JoinGameProtocol(int role_id, float x, float y, float z, float rx, float ry, float rz)
         {
-            Protocol_id = (int)ProtocolId.JoinGame;
-            CTF = new CustomTransform(x, y, z, rx, ry, rz);
+            Protocol_id = (int)ProtocolID.JoinGame;
+            mytf = new MyTransform(x, y, z, rx, ry, rz);
             Role_Id = role_id;
         }
 
-        public JoinGameProtocol(int role_id, CustomTransform ctf)
+        public JoinGameProtocol(int role_id, MyTransform mytf)
         {
-            Protocol_id = (int)ProtocolId.JoinGame;
-            this.CTF = ctf;
+            Protocol_id = (int)ProtocolID.JoinGame;
+            this.mytf = mytf;
             Role_Id = role_id;
         }
 
@@ -39,13 +40,13 @@ namespace Common.Protocol
         {
             Role_Id = BitConverter.ToInt32(data, 8);
             Console.WriteLine(Role_Id + " Role_Id");
-            Console.WriteLine(CTF + " Stf");
-            CTF.X = BitConverter.ToSingle(data, 12);
-            CTF.Y = BitConverter.ToSingle(data, 16);
-            CTF.Z = BitConverter.ToSingle(data, 20);
-            CTF.RX = BitConverter.ToSingle(data, 24);
-            CTF.RY = BitConverter.ToSingle(data, 28);
-            CTF.RZ = BitConverter.ToSingle(data, 32);
+            Console.WriteLine(mytf + " Stf");
+            mytf.X = BitConverter.ToSingle(data, 12);
+            mytf.Y = BitConverter.ToSingle(data, 16);
+            mytf.Z = BitConverter.ToSingle(data, 20);
+            mytf.RX = BitConverter.ToSingle(data, 24);
+            mytf.RY = BitConverter.ToSingle(data, 28);
+            mytf.RZ = BitConverter.ToSingle(data, 32);
         }
 
         /// <summary>
@@ -63,12 +64,12 @@ namespace Common.Protocol
             streamList.AddRange(BitConverter.GetBytes(dataLength));
             streamList.AddRange(BitConverter.GetBytes(Protocol_id));
             streamList.AddRange(BitConverter.GetBytes(Role_Id));
-            streamList.AddRange(BitConverter.GetBytes(CTF.X));
-            streamList.AddRange(BitConverter.GetBytes(CTF.Y));
-            streamList.AddRange(BitConverter.GetBytes(CTF.Z));
-            streamList.AddRange(BitConverter.GetBytes(CTF.RX));
-            streamList.AddRange(BitConverter.GetBytes(CTF.RY));
-            streamList.AddRange(BitConverter.GetBytes(CTF.RZ));
+            streamList.AddRange(BitConverter.GetBytes(mytf.X));
+            streamList.AddRange(BitConverter.GetBytes(mytf.Y));
+            streamList.AddRange(BitConverter.GetBytes(mytf.Z));
+            streamList.AddRange(BitConverter.GetBytes(mytf.RX));
+            streamList.AddRange(BitConverter.GetBytes(mytf.RY));
+            streamList.AddRange(BitConverter.GetBytes(mytf.RZ));
 
             return streamList.ToArray();
         }

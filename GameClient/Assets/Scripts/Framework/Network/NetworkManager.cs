@@ -13,7 +13,7 @@ public class NetworkManager : Singleton<NetworkManager>
 
     float time = 0;
 
-    private static string IP = "192.168.1.116";
+    private static string IP = "192.168.191.1";
     private static int Port = 6688;
 
     private Socket clientSocket;
@@ -162,12 +162,13 @@ public class NetworkManager : Singleton<NetworkManager>
         {
             if (clientSocket != null)
             {
-                if (StateMachine.Instance.GetCurrentState() == StateType.Battle)
-                {
-                    DieProtocol dieProtocol = new DieProtocol(PlayerInfoManager.Instance.GetUserData().ID);
-                    byte[] data = dieProtocol.Encode();
-                    clientSocket.Send(data);
-                }
+                // todo
+                //if (StateMachine.Instance.GetCurrentState() == StateType.Battle)
+                //{
+                //    DieProtocol dieProtocol = new DieProtocol(PlayerInfoManager.Instance.GetUserData().ID);
+                //    byte[] data = dieProtocol.Encode();
+                //    clientSocket.Send(data);
+                //}
                 clientSocket.Close();
             }
         }

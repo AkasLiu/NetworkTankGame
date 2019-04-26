@@ -47,7 +47,7 @@ public class Lua_Common_Protocol_StartGameProtocol : LuaObject {
 			else if(argc==3){
 				System.Int32 a1;
 				checkType(l,2,out a1);
-				Common.CustomTransform a2;
+				Common.MyTransform a2;
 				checkType(l,3,out a2);
 				o=new Common.Protocol.StartGameProtocol(a1,a2);
 				pushValue(l,true);
@@ -136,7 +136,7 @@ public class Lua_Common_Protocol_StartGameProtocol : LuaObject {
 	}
 	[SLua.MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	[UnityEngine.Scripting.Preserve]
-	static public int get_CTF(IntPtr l) {
+	static public int get_Mytf(IntPtr l) {
 		try {
 			#if DEBUG
 			var method = System.Reflection.MethodBase.GetCurrentMethod();
@@ -149,7 +149,7 @@ public class Lua_Common_Protocol_StartGameProtocol : LuaObject {
 			#endif
 			Common.Protocol.StartGameProtocol self=(Common.Protocol.StartGameProtocol)checkSelf(l);
 			pushValue(l,true);
-			pushValue(l,self.CTF);
+			pushValue(l,self.Mytf);
 			return 2;
 		}
 		catch(Exception e) {
@@ -167,7 +167,7 @@ public class Lua_Common_Protocol_StartGameProtocol : LuaObject {
 	}
 	[SLua.MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	[UnityEngine.Scripting.Preserve]
-	static public int set_CTF(IntPtr l) {
+	static public int set_Mytf(IntPtr l) {
 		try {
 			#if DEBUG
 			var method = System.Reflection.MethodBase.GetCurrentMethod();
@@ -179,9 +179,9 @@ public class Lua_Common_Protocol_StartGameProtocol : LuaObject {
 			#endif
 			#endif
 			Common.Protocol.StartGameProtocol self=(Common.Protocol.StartGameProtocol)checkSelf(l);
-			Common.CustomTransform v;
+			Common.MyTransform v;
 			checkType(l,2,out v);
-			self.CTF=v;
+			self.Mytf=v;
 			pushValue(l,true);
 			return 1;
 		}
@@ -267,7 +267,7 @@ public class Lua_Common_Protocol_StartGameProtocol : LuaObject {
 		getTypeTable(l,"Common.Protocol.StartGameProtocol");
 		addMember(l,Decode);
 		addMember(l,Encode);
-		addMember(l,"CTF",get_CTF,set_CTF,true);
+		addMember(l,"Mytf",get_Mytf,set_Mytf,true);
 		addMember(l,"Role_Id",get_Role_Id,set_Role_Id,true);
 		createTypeMetatable(l,constructor, typeof(Common.Protocol.StartGameProtocol),typeof(Common.Protocol.BaseProtocol));
 	}

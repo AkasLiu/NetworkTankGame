@@ -18,7 +18,7 @@ namespace GameClientConsole
 
 
             Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            IPEndPoint serverIPEndPoint = new IPEndPoint(IPAddress.Parse("192.168.2.136"), 23456);
+            IPEndPoint serverIPEndPoint = new IPEndPoint(IPAddress.Parse("192.168.1.116"), 6688);
 
             try
             {
@@ -33,43 +33,24 @@ namespace GameClientConsole
 
             //CustomTransform simplyTransForm = new CustomTransform(10.0f, 10.0f, 10.0f, 10.0f, 10.0f, 10.0f);
             //byte[] bytes = new StartGameProtocol(5, 10.0f, 10.0f, 10.0f, 10.0f, 10.0f, 10.0f).Encode();
-            
+
             //clientSocket.Send(bytes);
 
-            while (true)
-            {
+            LoginProtocol loginProtocol = new LoginProtocol("1", "1");
+            clientSocket.Send(loginProtocol.Encode());
 
+            byte[] buffer = new byte[1024];
 
-                if(DateTime.Now.Ticks / 10000 - time > 20)
-                {
+            clientSocket.Receive(buffer);
 
-                    Byte[] stream = new Byte[44];
+            ReturnUserDataProtocol returnUserDataProtocol = new ReturnUserDataProtocol();
+            returnUserDataProtocol.Decode(buffer);
 
-                    List<byte> streamList = new List<byte>();
+            Console.WriteLine(returnUserDataProtocol.Username);
 
-                    streamList.AddRange(BitConverter.GetBytes(44));
-                    streamList.AddRange(BitConverter.GetBytes(1));
-                    streamList.AddRange(BitConverter.GetBytes(0));
-                    streamList.AddRange(BitConverter.GetBytes(0));
-                    streamList.AddRange(BitConverter.GetBytes(0));
-                    streamList.AddRange(BitConverter.GetBytes(0));
-                    streamList.AddRange(BitConverter.GetBytes(0));
-                    streamList.AddRange(BitConverter.GetBytes(0));
-                    streamList.AddRange(BitConverter.GetBytes(0));
-                    streamList.AddRange(BitConverter.GetBytes(0));
-                    streamList.AddRange(BitConverter.GetBytes(0));
-
-
-
-                    clientSocket.Send(streamList.ToArray());
-
-                    time = DateTime.Now.Ticks / 10000;
-                }
-
-
+            Console.Read();
 
                 
-            }
         }
     }
 }

@@ -5,27 +5,22 @@ function battleController:ctor(  )
 end
 
 function battleController:generateTank( param )
-	local startGameProtocol = Common.Protocol.StartGameProtocol()
-	startGameProtocol:Decode(param)
-	customTransform = Common.CustomTransform(startGameProtocol.CTF.X,
-            startGameProtocol.CTF.Y, startGameProtocol.CTF.Z, startGameProtocol.CTF.RX, startGameProtocol.CTF.RY, startGameProtocol.CTF.RZ)
-	global.sceneManager:generateTank(startGameProtocol.Role_Id,customTransform)
+	local joinGameProtocol = Common.Protocol.JoinGameProtocol()
+	joinGameProtocol:Decode(param)
+	local myTransform = Common.MyTransform(joinGameProtocol.mytf.X,
+            joinGameProtocol.mytf.Y, joinGameProtocol.mytf.Z, joinGameProtocol.mytf.RX, joinGameProtocol.mytf.RY, joinGameProtocol.mytf.RZ)
+	global.sceneManager:generateTank(joinGameProtocol.Role_Id,myTransform)
 end
 
 function battleController:registerProto( )
-	NetworkManager.Instance:RegisterProto(ProtocolId.JoinGame, packFunction(self,self.generateTank))
+	NetworkManager.Instance:RegisterProto(ProtocolID.JoinGame, packFunction(self,self.generateTank))
 end
 
 function battleController:unregisterProto(  )
-	NetworkManager.Instance:UnregisterProto(ProtocolId.JoinGame, packFunction(self,self.generateTank))
+	NetworkManager.Instance:UnregisterProto(ProtocolID.JoinGame, packFunction(self,self.generateTank))
 end
 
---[[function battleController:exitGame(  )	
-	global.FSM:changeState("FSM/GameHallState")
-end--]]
-
 function battleController:fire(  )
-	--local fireProtocol = Common.Protocol.FireProtocol(userData.id)
 	NetworkManager.Instance:Send(Common.Protocol.FireProtocol(userData.id))
 end
 

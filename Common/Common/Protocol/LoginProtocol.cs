@@ -12,19 +12,18 @@ namespace Common.Protocol
 
         public LoginProtocol(string username, string password)
         {
-            Protocol_id = (int)ProtocolId.Login;
+            Protocol_id = (int)ProtocolID.Login;
             this.Username = username;
             this.Password = password;
         }
 
         public LoginProtocol()
         {
-            Protocol_id = (int)ProtocolId.Login;
+            Protocol_id = (int)ProtocolID.Login;
         }
 
         /// <summary>
         /// 编码格式
-        /// 0x 00000014 00000001 00 00 00 03 23 23 34 00 00 00 02 23 24
         /// 总长度+id+长度+string+长度+string
         /// </summary>
         /// <param name="data"></param>
@@ -43,10 +42,8 @@ namespace Common.Protocol
 
         /// <summary>
         /// 编码格式
-        /// 0x 00000014 00000001 00 00 00 03 23 23 34 00 00 00 02 23 24
         /// 总长度+id+长度+string+长度+string
         /// </summary>
-        /// <returns></returns>
         public override byte[] Encode()
         {              
             byte[] usernameBytes = Encoding.UTF8.GetBytes(Username);

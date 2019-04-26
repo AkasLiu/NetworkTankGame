@@ -16,20 +16,20 @@ namespace GameServer.Servers
         private IPEndPoint iPEndPoint;
         private Socket serverSocket;
         private ControllerManager controllerManager;
-        private List<Client> clientList;
+        public List<Client> ClientList { get; }
+        public List<Room> RoomList { get; set; }
 
         public Server() { }
         public Server(string ipStr, int port)
         {
             SetIpAndPort(ipStr, port);
-            clientList = new List<Client>();
+            ClientList = new List<Client>();
             controllerManager = new ControllerManager(this);
+            RoomList = new List<Room>();
+            RoomList.Add(new Room());
         }
 
-        public List<Client> ClientList
-        {
-            get { return clientList; }
-        }
+        
 
         public void SetIpAndPort(string ipStr, int port)
         {
@@ -51,7 +51,7 @@ namespace GameServer.Servers
         {
             Socket clientSocket = serverSocket.EndAccept(ar);
             Client client = new Client(clientSocket,this);
-            clientList.Add(client);
+            ClientList.Add(client);
             client.Start();
 
             Console.WriteLine("一个客户端连接到服务器......");
@@ -59,17 +59,40 @@ namespace GameServer.Servers
             serverSocket.BeginAccept(AcceptCallBack, null);
         }
 
+        public List<Client> clientsInRoom(int roomId)
+        {
+            for(int i = 0; i < RoomList.Count; i++)
+            {
+                if (RoomList[i].RoomID == roomId)
+                {
+                    return RoomList[i].clientList;
+                }
+            }
+            return null;
+        }
+
+        public Room FindRoomById(int roomId)
+        {
+            for (int i = 0; i < RoomList.Count; i++)
+            {
+                if (RoomList[i].RoomID == roomId)
+                {
+                    return RoomList[i];
+                }
+            }
+            return null;
+        }
+
         public void RemoveClient(Client client)
         {
-            lock (clientList)
+            lock (ClientList)
             {
-                clientList.Remove(client);
+                ClientList.Remove(client);
             }
         }
 
         /// <summary>
         /// 服务器处理客户端发来的请求,将请求转发给controller层
-        /// 被client类调用
         /// </summary>
         /// <param name="protocol_Id"></param>
         /// <param name="data"></param>
@@ -87,12 +110,10 @@ namespace GameServer.Servers
         /// <param name="data"></param>
         public void SendResponse(byte[] data, Client client)
         {
-            //Console.WriteLine("对客户端发起响应");
             if (data != null)
             {
                 client.Send(data);
-            }
-            
+            }          
         }
 
 

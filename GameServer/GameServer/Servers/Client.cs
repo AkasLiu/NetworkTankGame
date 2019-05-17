@@ -74,7 +74,7 @@ namespace GameServer.Servers
         private void Close()
         {
             if (clientSocket != null)
-            {
+            {               
                 ConnHelper.DisConnect(MySQLConn);
                 if (clientSocket != null)
                 {
@@ -84,10 +84,25 @@ namespace GameServer.Servers
                 if (RoomID != -1)
                 {
                     server.clientsInRoom(RoomID).Remove(this);
-
                 }
-                
-                server.RemoveClient(this);          
+
+                try
+                {
+                    server.clientsInRoom(this.RoomID).Remove(this);
+                    foreach (Client c in server.clientsInRoom(this.RoomID))
+                    {
+                        Console.WriteLine("shenxia " + c.playerData.Id);
+                    }
+                    server.FindRoomById(this.RoomID).CurrentCount--;
+                    this.RoomID = -1;
+
+                    server.RemoveClient(this);
+                }
+                catch(Exception e)
+                {
+                    
+                }
+                    
             }
         }
     }

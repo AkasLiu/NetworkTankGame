@@ -28,6 +28,10 @@ namespace GameServer.Controller
             }
 
             server.clientsInRoom(client.RoomID).Remove(client);
+            foreach(Client c in server.clientsInRoom(client.RoomID))
+            {
+                Console.WriteLine("shenxia "+c.playerData.Id);
+            }
             server.FindRoomById(client.RoomID).CurrentCount--;
             client.RoomID = -1;
             //移除房间

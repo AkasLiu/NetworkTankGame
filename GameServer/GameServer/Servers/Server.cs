@@ -29,6 +29,14 @@ namespace GameServer.Servers
             RoomList.Add(new Room());
         }
 
+        public Server(int port)
+        {
+            iPEndPoint = new IPEndPoint(IPAddress.Any, port);
+            ClientList = new List<Client>();
+            controllerManager = new ControllerManager(this);
+            RoomList = new List<Room>();
+            RoomList.Add(new Room());
+        }
         
 
         public void SetIpAndPort(string ipStr, int port)

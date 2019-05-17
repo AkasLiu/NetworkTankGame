@@ -52,14 +52,14 @@ public class GameManager : MonoBehaviour {
 
     // 加载lua文件Delagate
     private byte[] LuaFileLoader(string strFile, ref string absoluteFn)
-    {
+    {       
         if (strFile == null)
         {
             return null;
-        }        
+        }
 
-        string filename = "assets/hotfix/lua/" + strFile.Replace('.', '/') + ".bytes";
-        AssetBundle ab = AssetBundle.LoadFromFile(Application.persistentDataPath + @"/lua.unity3d");
+        string filename = "assets/resources/hotfix/lua/" + strFile.Replace('.', '/') + ".bytes";              
+        AssetBundle ab = AssetBundle.LoadFromFile(Application.persistentDataPath + "/lua.unity3d");
         TextAsset textAsset = ab.LoadAsset<TextAsset>(filename);
         ab.Unload(false);
         return textAsset.bytes;

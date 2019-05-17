@@ -16,9 +16,8 @@ namespace GameClientConsole
 
             long time = 0 ;
 
-
             Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            IPEndPoint serverIPEndPoint = new IPEndPoint(IPAddress.Parse("192.168.1.116"), 6688);
+            IPEndPoint serverIPEndPoint = new IPEndPoint(IPAddress.Parse("120.78.170.175"), 6688);
 
             try
             {

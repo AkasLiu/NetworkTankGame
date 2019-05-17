@@ -297,9 +297,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\CRC32.cs" />
     <Compile Include="Assets\Editor\CreateAssetsBundle.cs" />
-    <Compile Include="Assets\Editor\LuaAndTxt.cs" />
     <Compile Include="Assets\Slua\Editor\CustomEditor.cs" />
     <Compile Include="Assets\Slua\Editor\CustomExport.cs" />
     <Compile Include="Assets\Slua\Editor\LoggerHelper.cs" />

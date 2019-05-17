@@ -239,6 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Framework\Event\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Framework\HotFix\CRC32.cs" />
     <Compile Include="Assets\Scripts\Framework\HotFix\HotFixManager.cs" />
     <Compile Include="Assets\Scripts\Framework\MVC\ControllerBase.cs" />
     <Compile Include="Assets\Scripts\Framework\MVC\ModelBase.cs" />

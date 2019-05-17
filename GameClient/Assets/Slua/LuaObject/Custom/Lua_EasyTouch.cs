@@ -5,6 +5,39 @@ using System.Collections.Generic;
 public class Lua_EasyTouch : LuaObject {
 	[SLua.MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	[UnityEngine.Scripting.Preserve]
+	static public int OnDrag(IntPtr l) {
+		try {
+			#if DEBUG
+			var method = System.Reflection.MethodBase.GetCurrentMethod();
+			string methodName = GetMethodName(method);
+			#if UNITY_5_5_OR_NEWER
+			UnityEngine.Profiling.Profiler.BeginSample(methodName);
+			#else
+			Profiler.BeginSample(methodName);
+			#endif
+			#endif
+			EasyTouch self=(EasyTouch)checkSelf(l);
+			UnityEngine.EventSystems.PointerEventData a1;
+			checkType(l,2,out a1);
+			self.OnDrag(a1);
+			pushValue(l,true);
+			return 1;
+		}
+		catch(Exception e) {
+			return error(l,e);
+		}
+		#if DEBUG
+		finally {
+			#if UNITY_5_5_OR_NEWER
+			UnityEngine.Profiling.Profiler.EndSample();
+			#else
+			Profiler.EndSample();
+			#endif
+		}
+		#endif
+	}
+	[SLua.MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	[UnityEngine.Scripting.Preserve]
 	static public int OnEndDrag(IntPtr l) {
 		try {
 			#if DEBUG
@@ -165,6 +198,7 @@ public class Lua_EasyTouch : LuaObject {
 	[UnityEngine.Scripting.Preserve]
 	static public void reg(IntPtr l) {
 		getTypeTable(l,"EasyTouch");
+		addMember(l,OnDrag);
 		addMember(l,OnEndDrag);
 		addMember(l,"maxRadius",get_maxRadius,set_maxRadius,true);
 		addMember(l,"Horizontal",get_Horizontal,null,true);

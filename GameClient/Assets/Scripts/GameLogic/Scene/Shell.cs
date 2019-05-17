@@ -37,9 +37,4 @@ public class Shell : MonoBehaviour {
         Destroy(shellExplosion, 1);
 
     }
-
-    public void ADD(LuaFunction function)
-    {
-        TestPrint test = function.cast<TestPrint>();
-    }
 }

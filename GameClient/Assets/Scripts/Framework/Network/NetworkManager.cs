@@ -11,9 +11,7 @@ public class NetworkManager : Singleton<NetworkManager>
 {
     //Thread _socketThread; // 负责把协议接收好，放到协议队列
 
-    float time = 0;
-
-    private static string IP = "192.168.191.1";
+    private static string IP = "120.78.170.175";
     private static int Port = 6688;
 
     private Socket clientSocket;

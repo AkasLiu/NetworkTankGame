@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1054675786
+CRC: 3529075456
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e90ea83a7c86eaabbd7371c8581cf4e0
+    Hash: 4b9960fb032f4344c072fcbbd5fe162e
   TypeTreeHash:
     serializedVersion: 2
     Hash: fc316c7a11020260bacec4997f7e1b62
@@ -14,5 +14,15 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 Assets:
+- Assets/Test/New Material 7.mat
+- Assets/Test/New Material 4.mat
+- Assets/Test/New Material 8.mat
+- Assets/Test/New Material 3.mat
+- Assets/Test/New Material 5.mat
+- Assets/Test/New Material 1.mat
+- Assets/Test/New Material 10.mat
+- Assets/Test/New Material 6.mat
+- Assets/Test/New Material 9.mat
 - Assets/Test/New Material.mat
+- Assets/Test/New Material 2.mat
 Dependencies: []

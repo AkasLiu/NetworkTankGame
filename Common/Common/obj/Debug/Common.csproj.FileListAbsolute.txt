@@ -25,3 +25,4 @@ F:\Code\NetworkTankProject\Common\Common\bin\Debug\Common.pdb
 F:\Code\NetworkTankProject\Common\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 F:\Code\NetworkTankProject\Common\Common\obj\Debug\Common.dll
 F:\Code\NetworkTankProject\Common\Common\obj\Debug\Common.pdb
+F:\Code\NetworkTankProject\Common\Common\obj\Debug\Common.csprojAssemblyReference.cache

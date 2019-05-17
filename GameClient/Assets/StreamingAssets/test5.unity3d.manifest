@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 2811232749
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e3e102e057384cdcf3499842fab6f732
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: fc316c7a11020260bacec4997f7e1b62
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Test5/New Material 26.mat
+- Assets/Test5/New Material 23.mat
+- Assets/Test5/New Material 22.mat
+- Assets/Test5/New Material 24.mat
+- Assets/Test5/New Material 25.mat
+- Assets/Test5/New Material 27.mat
+- Assets/Test5/New Material 15.mat
+- Assets/Test5/New Material 21.mat
+- Assets/Test5/New Material 16.mat
+- Assets/Test5/New Material 18.mat
+Dependencies: []
